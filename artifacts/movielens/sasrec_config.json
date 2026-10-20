@@ -1,0 +1,41 @@
+{
+  "checkpoint": "artifacts/movielens/sasrec.pt",
+  "checkpoint_sha256": "ef72954161480d29c35e56345bb637ba84b78032e19449c17246fdc35116c07e",
+  "split_strategy": "per_user_last_two_strict_timestamp_v2",
+  "random_seed": 42,
+  "model_config": {
+    "num_items": 3533,
+    "max_seq_len": 50,
+    "embedding_dim": 64,
+    "num_blocks": 2,
+    "num_heads": 2,
+    "dropout": 0.2
+  },
+  "training_config": {
+    "dataset": "movielens",
+    "data_dir": "data",
+    "artifacts_dir": "artifacts",
+    "max_epochs": 30,
+    "patience": 5,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "embedding_dim": 64,
+    "num_blocks": 2,
+    "num_heads": 2,
+    "max_seq_len": 50,
+    "dropout": 0.2,
+    "positive_threshold": null,
+    "seed": 42,
+    "device": "cpu"
+  },
+  "best_epoch": 30,
+  "best_validation_metrics": {
+    "Recall@10": 0.12462809917355372,
+    "NDCG@10": 0.06479143316206283,
+    "HitRate@10": 0.12462809917355372,
+    "Recall@20": 0.19768595041322315,
+    "NDCG@20": 0.08312126744983876,
+    "HitRate@20": 0.19768595041322315
+  }
+}

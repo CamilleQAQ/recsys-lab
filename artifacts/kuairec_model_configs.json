@@ -1,0 +1,197 @@
+{
+  "MF": {
+    "checkpoint": "artifacts/kuairec/matrix_factorization.pt",
+    "checkpoint_sha256": "f847d90a3e674247d09989a1f2cd37041318ac41061154e94cd30b7ddf14596f",
+    "dataset": "kuairec",
+    "positive_threshold": 1.0,
+    "random_seed": 42,
+    "model_config": {
+      "num_users": 7176,
+      "num_items": 10669,
+      "embedding_dim": 64
+    },
+    "training_config": {
+      "dataset": "kuairec",
+      "data_dir": "data",
+      "artifacts_dir": "artifacts",
+      "epochs": 5,
+      "batch_size": 1024,
+      "learning_rate": 0.01,
+      "embedding_dim": 64,
+      "positive_threshold": null,
+      "seed": 42,
+      "device": "auto",
+      "max_batches_per_epoch": null
+    },
+    "epoch_losses": [
+      0.4153841550003687,
+      0.3765431082221133,
+      0.3665150704755152,
+      0.3613883048011815,
+      0.3588449555268628
+    ],
+    "best_epoch": 1,
+    "metrics": {
+      "Recall@10": 0.01240418118466899,
+      "NDCG@10": 0.005985445030431423,
+      "HitRate@10": 0.01240418118466899,
+      "Recall@20": 0.021881533101045295,
+      "NDCG@20": 0.008333190318948407,
+      "HitRate@20": 0.021881533101045295
+    },
+    "validation_metrics": {
+      "Recall@10": 0.018118466898954706,
+      "NDCG@10": 0.008581023138190381,
+      "HitRate@10": 0.018118466898954706,
+      "Recall@20": 0.029686411149825783,
+      "NDCG@20": 0.011475163373048767,
+      "HitRate@20": 0.029686411149825783
+    },
+    "test_metrics": {
+      "Recall@10": 0.01240418118466899,
+      "NDCG@10": 0.005985445030431423,
+      "HitRate@10": 0.01240418118466899,
+      "Recall@20": 0.021881533101045295,
+      "NDCG@20": 0.008333190318948407,
+      "HitRate@20": 0.021881533101045295
+    }
+  },
+  "Two-Tower": {
+    "checkpoint": "artifacts/kuairec/two_tower.pt",
+    "checkpoint_sha256": "5e85f04cf5e09e4de180ff29042415cdc86c22e4ba5282e7e7eedcf57348dbd2",
+    "dataset": "kuairec",
+    "positive_threshold": 1.0,
+    "random_seed": 42,
+    "model_config": {
+      "num_users": 7176,
+      "num_items": 10669,
+      "embedding_dim": 128,
+      "hidden_dim": 128,
+      "output_dim": 128,
+      "temperature": 0.1,
+      "tower_type": "embedding"
+    },
+    "training_config": {
+      "dataset": "kuairec",
+      "data_dir": "data",
+      "artifacts_dir": "artifacts",
+      "epochs": 9,
+      "batch_size": 256,
+      "learning_rate": 0.01,
+      "embedding_dim": 128,
+      "hidden_dim": 128,
+      "output_dim": 128,
+      "temperature": 0.1,
+      "tower_type": "embedding",
+      "mask_false_negatives": true,
+      "positive_threshold": 1.0,
+      "weight_decay": 0.0,
+      "seed": 42,
+      "device": "auto",
+      "max_batches_per_epoch": null
+    },
+    "epoch_losses": [
+      5.082984705533514,
+      4.509387521123011,
+      4.40562077077409,
+      4.359269303783587,
+      4.331983227706372,
+      4.313435572986054,
+      4.299889847560866,
+      4.2894855850849725,
+      4.280886874293992
+    ],
+    "best_epoch": 8,
+    "metrics": {
+      "Recall@10": 0.012264808362369338,
+      "NDCG@10": 0.006150499864380808,
+      "HitRate@10": 0.012264808362369338,
+      "Recall@20": 0.019233449477351918,
+      "NDCG@20": 0.007891944440541867,
+      "HitRate@20": 0.019233449477351918
+    },
+    "validation_metrics": {
+      "Recall@10": 0.013519163763066203,
+      "NDCG@10": 0.0062963407745220456,
+      "HitRate@10": 0.013519163763066203,
+      "Recall@20": 0.023693379790940768,
+      "NDCG@20": 0.008840055986219205,
+      "HitRate@20": 0.023693379790940768
+    },
+    "test_metrics": {
+      "Recall@10": 0.012264808362369338,
+      "NDCG@10": 0.006150499864380808,
+      "HitRate@10": 0.012264808362369338,
+      "Recall@20": 0.019233449477351918,
+      "NDCG@20": 0.007891944440541867,
+      "HitRate@20": 0.019233449477351918
+    }
+  },
+  "SASRec": {
+    "checkpoint": "artifacts/kuairec/sasrec.pt",
+    "checkpoint_sha256": "3120a4e2e85a257cc61c4a77d4883ead03fc421bb67dbb91dd8a62ed58ee28ab",
+    "dataset": "kuairec",
+    "positive_threshold": 1.0,
+    "random_seed": 42,
+    "model_config": {
+      "num_items": 10669,
+      "max_seq_len": 50,
+      "embedding_dim": 64,
+      "num_blocks": 1,
+      "num_heads": 2,
+      "dropout": 0.2
+    },
+    "training_config": {
+      "dataset": "kuairec",
+      "data_dir": "data",
+      "artifacts_dir": "artifacts",
+      "max_epochs": 60,
+      "patience": 8,
+      "batch_size": 256,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "embedding_dim": 64,
+      "num_blocks": 1,
+      "num_heads": 2,
+      "max_seq_len": 50,
+      "dropout": 0.2,
+      "positive_threshold": null,
+      "seed": 42,
+      "device": "auto"
+    },
+    "epoch_losses": null,
+    "best_epoch": 54,
+    "metrics": {
+      "Recall@10": 0.17658536585365853,
+      "NDCG@10": 0.10172406517864924,
+      "HitRate@10": 0.17658536585365853,
+      "Recall@20": 0.24989547038327525,
+      "NDCG@20": 0.12013893368932577,
+      "HitRate@20": 0.24989547038327525
+    },
+    "validation_metrics": {
+      "Recall@10": 0.1919163763066202,
+      "NDCG@10": 0.11181290522367768,
+      "HitRate@10": 0.1919163763066202,
+      "Recall@20": 0.2696864111498258,
+      "NDCG@20": 0.1313294614076797,
+      "HitRate@20": 0.2696864111498258
+    },
+    "test_metrics": {
+      "Recall@10": 0.17658536585365853,
+      "NDCG@10": 0.10172406517864924,
+      "HitRate@10": 0.17658536585365853,
+      "Recall@20": 0.24989547038327525,
+      "NDCG@20": 0.12013893368932577,
+      "HitRate@20": 0.24989547038327525
+    },
+    "train_history_only_metrics": {
+      "Recall@10": 0.16808362369337979,
+      "NDCG@10": 0.09366166876844237,
+      "HitRate@10": 0.16808362369337979,
+      "Recall@20": 0.24236933797909407,
+      "NDCG@20": 0.11230127013858333,
+      "HitRate@20": 0.24236933797909407
+    }
+  }
+}

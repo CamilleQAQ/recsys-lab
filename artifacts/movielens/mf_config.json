@@ -1,0 +1,27 @@
+{
+  "checkpoint": "artifacts/movielens/matrix_factorization.pt",
+  "checkpoint_sha256": "817dc8147a48ac10f28d01df6f938cab0dded907a1d5da045df8746af11742c2",
+  "split_strategy": "per_user_last_two_strict_timestamp_v2",
+  "random_seed": 42,
+  "model_config": {
+    "num_users": 6038,
+    "num_items": 3533,
+    "embedding_dim": 64
+  },
+  "training_config": {
+    "dataset": "movielens",
+    "data_dir": "data",
+    "artifacts_dir": "artifacts",
+    "epochs": 5,
+    "batch_size": 1024,
+    "learning_rate": 0.01,
+    "embedding_dim": 64,
+    "positive_threshold": null,
+    "seed": 42,
+    "device": "auto",
+    "max_batches_per_epoch": null
+  },
+  "trained_epochs": 5,
+  "best_epoch": 5,
+  "selection_note": "selected by validation Recall@20"
+}

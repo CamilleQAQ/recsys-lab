@@ -1,0 +1,6 @@
+# Exact environment used for the 2026-10-13 verification run.
+torch==2.14.1
+numpy==2.2.6
+pytest==9.1.1
+certifi==2026.7.22
+faiss-cpu==1.15.1

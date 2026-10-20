@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "recsys-pytorch"
+version = "0.1.0"
+description = "一个周末，从零手搓你的第一个推荐系统：MovieLens 与 KuaiRec 上的可复现教程"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dynamic = ["dependencies"]
+
+[project.optional-dependencies]
+faiss = ["faiss-cpu>=1.15.1"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+# 测试也显式加入 src，未安装 editable package 时仍可直接收集测试。
+pythonpath = ["src"]
+testpaths = ["tests"]

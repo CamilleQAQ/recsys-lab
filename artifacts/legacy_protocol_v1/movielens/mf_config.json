@@ -1,0 +1,26 @@
+{
+  "checkpoint": "artifacts/legacy_protocol_v1/movielens/matrix_factorization.pt",
+  "checkpoint_sha256": "6754cc3012606a87f2ffa1b89d69196a46c1c2501b78884c1c1158beac4407e1",
+  "split_strategy": "per_user_last_two_validation_test",
+  "random_seed": 42,
+  "model_config": {
+    "num_users": 6038,
+    "num_items": 3533,
+    "embedding_dim": 64
+  },
+  "training_config": {
+    "data_dir": "data",
+    "output_dir": "artifacts",
+    "epochs": 5,
+    "batch_size": 1024,
+    "learning_rate": 0.01,
+    "embedding_dim": 64,
+    "positive_threshold": 4,
+    "seed": 42,
+    "device": "auto",
+    "max_batches_per_epoch": null
+  },
+  "trained_epochs": 5,
+  "best_epoch": null,
+  "selection_note": "fixed five-epoch baseline; not selected by validation"
+}

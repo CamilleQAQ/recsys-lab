@@ -1,0 +1,238 @@
+{
+  "generated_at_utc": "2026-10-19T12:57:11.561735+00:00",
+  "environment": {
+    "python": "3.10.7",
+    "pytorch": "2.14.1+cpu",
+    "faiss": "1.15.1",
+    "device": "cpu"
+  },
+  "random_seed": 42,
+  "dataset": {
+    "name": "MovieLens-1M",
+    "positive_rating_threshold": 4,
+    "num_users": 6038,
+    "num_items": 3533,
+    "positive_interactions": 575281,
+    "train_interactions": 569231,
+    "validation_interactions": 3025,
+    "test_interactions": 3025,
+    "validation_test_same_timestamp_users": 0,
+    "items_observed_in_train": 3527,
+    "items_absent_from_train": 6,
+    "validation_target_items_absent_from_train": 3,
+    "test_target_items_absent_from_train": 3
+  },
+  "evaluation_protocol": {
+    "split_strategy": "per_user_last_two_strict_timestamp_v2",
+    "ordering": "strict train < validation < test timestamps; ambiguous users remain in train",
+    "catalog_definition": "all positive-interaction item IDs before splitting",
+    "validation_use": "hyperparameter selection and checkpoint selection only",
+    "test_use": "evaluation after configurations and checkpoints are locked",
+    "test_access_note": "An inadvertent preliminary test diagnostic was printed before Two-Tower was reselected under the final seen filter. It was not used for model selection. The reported metrics below use validation-selected locked checkpoints; this is not a pristine single-access test holdout.",
+    "id_only_seen_filter": "all observed item exposures strictly before target time (including validation at test time)",
+    "sasrec_validation_history": "train interactions",
+    "sasrec_standard_test_history": "train + validation interactions",
+    "sasrec_standard_test_seen_filter": "all observed item exposures strictly before target time",
+    "target_in_model_input": false,
+    "determinism_note": "seeded Python and PyTorch; exact GPU bitwise reproducibility is not guaranteed"
+  },
+  "models": {
+    "Popularity": {
+      "random_seed": null,
+      "model_config": {
+        "ranking": "descending train interaction count"
+      },
+      "best_epoch": null,
+      "validation_metrics": {
+        "Recall@10": 0.056859504132231405,
+        "NDCG@10": 0.027243510529151013,
+        "HitRate@10": 0.056859504132231405,
+        "Recall@20": 0.09057851239669422,
+        "NDCG@20": 0.03563879520913739,
+        "HitRate@20": 0.09057851239669422
+      },
+      "test_metrics": {
+        "Recall@10": 0.05024793388429752,
+        "NDCG@10": 0.024535268560908475,
+        "HitRate@10": 0.05024793388429752,
+        "Recall@20": 0.08363636363636363,
+        "NDCG@20": 0.032910007136257614,
+        "HitRate@20": 0.08363636363636363
+      }
+    },
+    "MF": {
+      "random_seed": 42,
+      "model_config": {
+        "num_users": 6038,
+        "num_items": 3533,
+        "embedding_dim": 64
+      },
+      "training_config": {
+        "dataset": "movielens",
+        "data_dir": "data",
+        "artifacts_dir": "artifacts",
+        "epochs": 5,
+        "batch_size": 1024,
+        "learning_rate": 0.01,
+        "embedding_dim": 64,
+        "positive_threshold": null,
+        "seed": 42,
+        "device": "auto",
+        "max_batches_per_epoch": null
+      },
+      "best_epoch": 5,
+      "selection_note": "selected by validation Recall@20",
+      "validation_metrics": {
+        "Recall@10": 0.06677685950413223,
+        "NDCG@10": 0.033150988814262546,
+        "HitRate@10": 0.06677685950413223,
+        "Recall@20": 0.12264462809917355,
+        "NDCG@20": 0.047255528703988976,
+        "HitRate@20": 0.12264462809917355
+      },
+      "test_metrics": {
+        "Recall@10": 0.06446280991735537,
+        "NDCG@10": 0.03148975632695008,
+        "HitRate@10": 0.06446280991735537,
+        "Recall@20": 0.10314049586776859,
+        "NDCG@20": 0.04118617096093625,
+        "HitRate@20": 0.10314049586776859
+      }
+    },
+    "Two-Tower": {
+      "random_seed": 42,
+      "model_config": {
+        "num_users": 6038,
+        "num_items": 3533,
+        "embedding_dim": 64,
+        "hidden_dim": 128,
+        "output_dim": 128,
+        "temperature": 0.1,
+        "tower_type": "embedding"
+      },
+      "training_config": {
+        "name": "two_tower",
+        "data_dir": "data",
+        "output_dir": "artifacts\\movielens",
+        "max_epochs": 15,
+        "patience": 3,
+        "batch_size": 256,
+        "learning_rate": 0.01,
+        "weight_decay": 0.0,
+        "embedding_dim": 64,
+        "hidden_dim": 128,
+        "output_dim": 128,
+        "temperature": 0.1,
+        "tower_type": "embedding",
+        "mask_false_negatives": true,
+        "seed": 42,
+        "device": "auto"
+      },
+      "best_epoch": 4,
+      "validation_metrics": {
+        "Recall@10": 0.07074380165289257,
+        "NDCG@10": 0.03474979285328495,
+        "HitRate@10": 0.07074380165289257,
+        "Recall@20": 0.11867768595041323,
+        "NDCG@20": 0.0468240279639626,
+        "HitRate@20": 0.11867768595041323
+      },
+      "test_metrics": {
+        "Recall@10": 0.055206611570247935,
+        "NDCG@10": 0.028993934395475086,
+        "HitRate@10": 0.055206611570247935,
+        "Recall@20": 0.09553719008264462,
+        "NDCG@20": 0.03912163360303873,
+        "HitRate@20": 0.09553719008264462
+      }
+    },
+    "SASRec": {
+      "random_seed": 42,
+      "model_config": {
+        "num_items": 3533,
+        "max_seq_len": 50,
+        "embedding_dim": 64,
+        "num_blocks": 2,
+        "num_heads": 2,
+        "dropout": 0.2
+      },
+      "training_config": {
+        "dataset": "movielens",
+        "data_dir": "data",
+        "artifacts_dir": "artifacts",
+        "max_epochs": 30,
+        "patience": 5,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0,
+        "embedding_dim": 64,
+        "num_blocks": 2,
+        "num_heads": 2,
+        "max_seq_len": 50,
+        "dropout": 0.2,
+        "positive_threshold": null,
+        "seed": 42,
+        "device": "cpu"
+      },
+      "best_epoch": 30,
+      "validation_metrics": {
+        "Recall@10": 0.12462809917355372,
+        "NDCG@10": 0.06479143316206283,
+        "HitRate@10": 0.12462809917355372,
+        "Recall@20": 0.19768595041322315,
+        "NDCG@20": 0.08312126744983876,
+        "HitRate@20": 0.19768595041322315
+      },
+      "test_metrics": {
+        "Recall@10": 0.12826446280991735,
+        "NDCG@10": 0.06546316016364666,
+        "HitRate@10": 0.12826446280991735,
+        "Recall@20": 0.19305785123966943,
+        "NDCG@20": 0.08178741310899816,
+        "HitRate@20": 0.19305785123966943
+      }
+    }
+  },
+  "supplementary_controlled_evaluation": {
+    "name": "SASRec train-history-only test",
+    "purpose": "train-only SASRec input with the same test-time seen-item filter",
+    "metrics": {
+      "Recall@10": 0.10181818181818182,
+      "NDCG@10": 0.051756724488375594,
+      "HitRate@10": 0.10181818181818182,
+      "Recall@20": 0.16033057851239668,
+      "NDCG@20": 0.06641344814242534,
+      "HitRate@20": 0.16033057851239668
+    }
+  },
+  "faiss_index_flat_ip": {
+    "brute_force_metrics": {
+      "Recall@10": 0.055206611570247935,
+      "NDCG@10": 0.028993934395475086,
+      "HitRate@10": 0.055206611570247935,
+      "Recall@20": 0.09553719008264462,
+      "NDCG@20": 0.03912163360303873,
+      "HitRate@20": 0.09553719008264462
+    },
+    "faiss_metrics": {
+      "Recall@10": 0.055206611570247935,
+      "NDCG@10": 0.028993934395475086,
+      "HitRate@10": 0.055206611570247935,
+      "Recall@20": 0.09553719008264462,
+      "NDCG@20": 0.03912163360303873,
+      "HitRate@20": 0.09553719008264462
+    },
+    "top_k_overlap": 1.0,
+    "exact_order_match_rate": 1.0,
+    "benchmark": {
+      "num_users": 3025,
+      "num_items": 3533,
+      "embedding_dim": 128,
+      "index_build_seconds": 0.007260699989274144,
+      "brute_force_total_seconds": 0.2715473999851383,
+      "brute_force_ms_per_user": 0.08976773553227713,
+      "faiss_total_seconds": 0.2778491000062786,
+      "faiss_ms_per_user": 0.0918509421508359
+    }
+  }
+}

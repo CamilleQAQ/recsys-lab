@@ -1,0 +1,39 @@
+{
+  "checkpoint": "artifacts/legacy_protocol_v1/movielens/sasrec.pt",
+  "checkpoint_sha256": "77875356feb0c7af19876f69c2c72c185723ea2f5c16ee2c35f88d9b6f252c7a",
+  "split_strategy": "per_user_last_two_validation_test",
+  "random_seed": 42,
+  "model_config": {
+    "num_items": 3533,
+    "max_seq_len": 50,
+    "embedding_dim": 64,
+    "num_blocks": 2,
+    "num_heads": 2,
+    "dropout": 0.2
+  },
+  "training_config": {
+    "data_dir": "data",
+    "output_dir": "artifacts",
+    "max_epochs": 30,
+    "patience": 5,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "embedding_dim": 64,
+    "num_blocks": 2,
+    "num_heads": 2,
+    "max_seq_len": 50,
+    "dropout": 0.2,
+    "seed": 42,
+    "device": "cpu"
+  },
+  "best_epoch": 29,
+  "best_validation_metrics": {
+    "Recall@10": 0.17133388566694283,
+    "NDCG@10": 0.08780948855164392,
+    "HitRate@10": 0.17133388566694283,
+    "Recall@20": 0.2591549295774648,
+    "NDCG@20": 0.10986771160157618,
+    "HitRate@20": 0.2591549295774648
+  }
+}

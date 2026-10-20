@@ -1,0 +1,149 @@
+{
+  "MF": {
+    "checkpoint": "artifacts/legacy_protocol_v1/kuairec/matrix_factorization.pt",
+    "checkpoint_sha256": "51d7912f6262008e27ed9f5a43e3920e0c3c85b7f60c3470e954881e10221c05",
+    "dataset": "kuairec",
+    "positive_threshold": 1.0,
+    "random_seed": 42,
+    "model_config": {
+      "num_users": 7176,
+      "num_items": 10719,
+      "embedding_dim": 64
+    },
+    "training_config": {
+      "dataset": "kuairec",
+      "data_dir": "data",
+      "artifacts_dir": "artifacts",
+      "epochs": 5,
+      "batch_size": 1024,
+      "learning_rate": 0.01,
+      "embedding_dim": 64,
+      "positive_threshold": null,
+      "seed": 42,
+      "device": "auto",
+      "max_batches_per_epoch": null
+    },
+    "epoch_losses": [
+      0.4092625191358783,
+      0.37203124404380356,
+      0.36239229674938134,
+      0.35762041448496223,
+      0.35528399744200595
+    ],
+    "best_epoch": null,
+    "metrics": {
+      "Recall@10": 0.008779264214046822,
+      "NDCG@10": 0.004166432723452269,
+      "HitRate@10": 0.008779264214046822,
+      "Recall@20": 0.015746934225195096,
+      "NDCG@20": 0.005898906089931663,
+      "HitRate@20": 0.015746934225195096
+    }
+  },
+  "Two-Tower": {
+    "checkpoint": "artifacts/legacy_protocol_v1/kuairec/two_tower.pt",
+    "checkpoint_sha256": "68a5cb37b01f58b9b860fd1a312ecfbb086ac966108a631a4b5fd023a47d6dbd",
+    "dataset": "kuairec",
+    "positive_threshold": 1.0,
+    "random_seed": 42,
+    "model_config": {
+      "num_users": 7176,
+      "num_items": 10719,
+      "embedding_dim": 128,
+      "hidden_dim": 128,
+      "output_dim": 128,
+      "temperature": 0.1,
+      "tower_type": "embedding"
+    },
+    "training_config": {
+      "dataset": "kuairec",
+      "data_dir": "data",
+      "artifacts_dir": "artifacts",
+      "epochs": 9,
+      "batch_size": 256,
+      "learning_rate": 0.01,
+      "embedding_dim": 128,
+      "hidden_dim": 128,
+      "output_dim": 128,
+      "temperature": 0.1,
+      "tower_type": "embedding",
+      "mask_false_negatives": true,
+      "positive_threshold": 1.0,
+      "weight_decay": 0.0,
+      "seed": 42,
+      "device": "auto",
+      "max_batches_per_epoch": null
+    },
+    "epoch_losses": [
+      5.032880610891683,
+      4.4694352091023655,
+      4.369082327241035,
+      4.324742395134771,
+      4.298524318574103,
+      4.281047079570036,
+      4.2679489876281265,
+      4.257635603790325,
+      4.249687415905653
+    ],
+    "best_epoch": null,
+    "metrics": {
+      "Recall@10": 0.010869565217391304,
+      "NDCG@10": 0.00497222024782703,
+      "HitRate@10": 0.010869565217391304,
+      "Recall@20": 0.019927536231884056,
+      "NDCG@20": 0.007199524056731933,
+      "HitRate@20": 0.019927536231884056
+    }
+  },
+  "SASRec": {
+    "checkpoint": "artifacts/legacy_protocol_v1/kuairec/sasrec.pt",
+    "checkpoint_sha256": "18521f1a74963c83e91fd5c793bb0b25a85608f1a21f29e09fbd234a277097d6",
+    "dataset": "kuairec",
+    "positive_threshold": 1.0,
+    "random_seed": 42,
+    "model_config": {
+      "num_items": 10719,
+      "max_seq_len": 50,
+      "embedding_dim": 64,
+      "num_blocks": 1,
+      "num_heads": 2,
+      "dropout": 0.2
+    },
+    "training_config": {
+      "dataset": "kuairec",
+      "data_dir": "data",
+      "artifacts_dir": "artifacts",
+      "max_epochs": 60,
+      "patience": 8,
+      "batch_size": 256,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "embedding_dim": 64,
+      "num_blocks": 1,
+      "num_heads": 2,
+      "max_seq_len": 50,
+      "dropout": 0.2,
+      "positive_threshold": null,
+      "seed": 42,
+      "device": "auto"
+    },
+    "epoch_losses": null,
+    "best_epoch": 49,
+    "metrics": {
+      "Recall@10": 0.1544035674470457,
+      "NDCG@10": 0.08962229938492305,
+      "HitRate@10": 0.1544035674470457,
+      "Recall@20": 0.21279264214046822,
+      "NDCG@20": 0.10432793315753418,
+      "HitRate@20": 0.21279264214046822
+    },
+    "train_history_only_metrics": {
+      "Recall@10": 0.1435340022296544,
+      "NDCG@10": 0.07940217706769986,
+      "HitRate@10": 0.1435340022296544,
+      "Recall@20": 0.20275919732441472,
+      "NDCG@20": 0.0943548689552737,
+      "HitRate@20": 0.20275919732441472
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "environment": {
+    "python": "3.10.7",
+    "pytorch": "2.14.1+cpu",
+    "device": "cpu"
+  },
+  "evaluation_protocol": {
+    "split_strategy": "per_user_last_two_validation_test",
+    "ordering": "per user by (timestamp, item_idx)",
+    "id_only_seen_filter": "train interactions",
+    "validation_use": "configuration and checkpoint selection only",
+    "test_use": "one locked run after the configuration is frozen",
+    "target_in_model_input": false,
+    "sasrec_standard_history": "train + validation interactions",
+    "sasrec_controlled_history": "train interactions only, matching the ID-only baselines"
+  },
+  "dataset": {
+    "name": "KuaiRec 2.0 big_matrix",
+    "positive_rule": "watch_ratio >= threshold (inclusive)",
+    "positive_threshold": 1.0,
+    "duplicate_handling": "merge per (user, video): latest timestamp, max watch_ratio",
+    "num_users": 7176,
+    "num_items": 10719,
+    "positive_interactions": 3731826,
+    "train_interactions": 3717474,
+    "validation_interactions": 7176,
+    "test_interactions": 7176,
+    "density_of_train": 0.04832938167184143,
+    "evaluation_users": 7176,
+    "train_interactions_per_user": {
+      "min": 5,
+      "mean": 518.0426421404683,
+      "p25": 212.0,
+      "median": 476.0,
+      "p75": 733.0,
+      "p90": 1000.0,
+      "p95": 1162.25,
+      "p99": 1424.5,
+      "max": 1964
+    },
+    "train_interactions_per_item": {
+      "min": 0,
+      "mean": 346.81164287713403,
+      "p25": 10.0,
+      "median": 59.0,
+      "p75": 481.0,
+      "p90": 1161.2000000000007,
+      "p95": 1540.1000000000004,
+      "p99": 2438.0999999999985,
+      "max": 3501
+    },
+    "items_observed_in_train": 10678,
+    "items_absent_from_train": 41,
+    "validation_target_items_absent_from_train": 26,
+    "test_target_items_absent_from_train": 22,
+    "validation_test_same_timestamp_users": 0,
+    "validation_test_same_timestamp_ratio": 0.0,
+    "candidate_items_per_user_after_filter": {
+      "min": 8755,
+      "mean": 10200.957357859532,
+      "p25": 9986.0,
+      "median": 10243.0,
+      "p75": 10507.0,
+      "p90": 10592.0,
+      "p95": 10619.0,
+      "p99": 10652.25,
+      "max": 10714
+    }
+  },
+  "runs": {
+    "validation": {
+      "generated_at_utc": "2026-10-18T07:06:05.743951+00:00",
+      "metrics": {
+        "Popularity": {
+          "Recall@10": 0.005016722408026756,
+          "NDCG@10": 0.0018458274930601526,
+          "HitRate@10": 0.005016722408026756,
+          "Recall@20": 0.012402452619843924,
+          "NDCG@20": 0.0036684459408727814,
+          "HitRate@20": 0.012402452619843924
+        },
+        "MF": {
+          "Recall@10": 0.008918617614269788,
+          "NDCG@10": 0.0044617823688855055,
+          "HitRate@10": 0.008918617614269788,
+          "Recall@20": 0.015328874024526198,
+          "NDCG@20": 0.006084769419735159,
+          "HitRate@20": 0.015328874024526198
+        },
+        "Two-Tower": {
+          "Recall@10": 0.009615384615384616,
+          "NDCG@10": 0.00440311312770148,
+          "HitRate@10": 0.009615384615384616,
+          "Recall@20": 0.017140468227424748,
+          "NDCG@20": 0.006304414065983374,
+          "HitRate@20": 0.017140468227424748
+        },
+        "SASRec": {
+          "Recall@10": 0.17488851727982163,
+          "NDCG@10": 0.10086815828072551,
+          "HitRate@10": 0.17488851727982163,
+          "Recall@20": 0.2406633221850613,
+          "NDCG@20": 0.1173902247330099,
+          "HitRate@20": 0.2406633221850613
+        }
+      },
+      "sasrec_train_history_only": {
+        "Recall@10": 0.17488851727982163,
+        "NDCG@10": 0.10086815828072551,
+        "HitRate@10": 0.17488851727982163,
+        "Recall@20": 0.2406633221850613,
+        "NDCG@20": 0.1173902247330099,
+        "HitRate@20": 0.2406633221850613
+      }
+    },
+    "test": {
+      "generated_at_utc": "2026-10-18T07:10:55.616869+00:00",
+      "metrics": {
+        "Popularity": {
+          "Recall@10": 0.00459866220735786,
+          "NDCG@10": 0.0019654517773725353,
+          "HitRate@10": 0.00459866220735786,
+          "Recall@20": 0.012402452619843924,
+          "NDCG@20": 0.0038614500790870093,
+          "HitRate@20": 0.012402452619843924
+        },
+        "MF": {
+          "Recall@10": 0.008779264214046822,
+          "NDCG@10": 0.004166432723452269,
+          "HitRate@10": 0.008779264214046822,
+          "Recall@20": 0.015746934225195096,
+          "NDCG@20": 0.005898906089931663,
+          "HitRate@20": 0.015746934225195096
+        },
+        "Two-Tower": {
+          "Recall@10": 0.010869565217391304,
+          "NDCG@10": 0.00497222024782703,
+          "HitRate@10": 0.010869565217391304,
+          "Recall@20": 0.019927536231884056,
+          "NDCG@20": 0.007199524056731933,
+          "HitRate@20": 0.019927536231884056
+        },
+        "SASRec": {
+          "Recall@10": 0.1544035674470457,
+          "NDCG@10": 0.08962229938492305,
+          "HitRate@10": 0.1544035674470457,
+          "Recall@20": 0.21279264214046822,
+          "NDCG@20": 0.10432793315753418,
+          "HitRate@20": 0.21279264214046822
+        }
+      },
+      "sasrec_train_history_only": {
+        "Recall@10": 0.1435340022296544,
+        "NDCG@10": 0.07940217706769986,
+        "HitRate@10": 0.1435340022296544,
+        "Recall@20": 0.20275919732441472,
+        "NDCG@20": 0.0943548689552737,
+        "HitRate@20": 0.20275919732441472
+      }
+    }
+  }
+}

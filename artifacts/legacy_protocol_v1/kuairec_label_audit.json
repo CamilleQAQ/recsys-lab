@@ -1,0 +1,25 @@
+{
+  "dataset": "KuaiRec 2.0",
+  "matrix": "data\\kuairec\\raw\\KuaiRec 2.0\\data\\big_matrix.csv",
+  "positive_rule": "watch_ratio >= threshold (inclusive)",
+  "watch_ratio_threshold": 1.0,
+  "duplicate_handling": "merge per (user, video): latest timestamp, max watch_ratio",
+  "label_audit": {
+    "raw_rows": 12530806,
+    "rows_kept_as_positive": 4238228,
+    "unique_positive_pairs": 3731826,
+    "duplicate_events_on_positive_pairs": 881045,
+    "mixed_signal_pairs": 327007,
+    "negative_only_pairs": 6569143,
+    "latest_event_below_threshold_pairs": 156733,
+    "rows_kept_as_positive_ratio": 0.33822469201103267,
+    "duplicate_share_of_kept_rows": 0.20788051043974037
+  },
+  "split": {
+    "train": 3717474,
+    "validation": 7176,
+    "test": 7176,
+    "users": 7176,
+    "items": 10719
+  }
+}

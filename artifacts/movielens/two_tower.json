@@ -1,0 +1,11 @@
+{
+  "experiment": "two_tower",
+  "best_epoch": 4,
+  "Recall@10": 0.07074380165289257,
+  "NDCG@10": 0.03474979285328495,
+  "HitRate@10": 0.07074380165289257,
+  "Recall@20": 0.11867768595041323,
+  "NDCG@20": 0.0468240279639626,
+  "HitRate@20": 0.11867768595041323,
+  "checkpoint": "artifacts\\movielens\\two_tower.pt"
+}

@@ -1,0 +1,43 @@
+{
+  "checkpoint": "artifacts/movielens/two_tower.pt",
+  "checkpoint_sha256": "918924e5fa86fd677030d60ef43d4a262ea7bc7ab3b51323440b75fc2ed98f24",
+  "split_strategy": "per_user_last_two_strict_timestamp_v2",
+  "random_seed": 42,
+  "model_config": {
+    "num_users": 6038,
+    "num_items": 3533,
+    "embedding_dim": 64,
+    "hidden_dim": 128,
+    "output_dim": 128,
+    "temperature": 0.1,
+    "tower_type": "embedding"
+  },
+  "training_config": {
+    "name": "two_tower",
+    "data_dir": "data",
+    "output_dir": "artifacts\\movielens",
+    "max_epochs": 15,
+    "patience": 3,
+    "batch_size": 256,
+    "learning_rate": 0.01,
+    "weight_decay": 0.0,
+    "embedding_dim": 64,
+    "hidden_dim": 128,
+    "output_dim": 128,
+    "temperature": 0.1,
+    "tower_type": "embedding",
+    "mask_false_negatives": true,
+    "seed": 42,
+    "device": "auto"
+  },
+  "best_epoch": 4,
+  "best_validation_metrics": {
+    "Recall@10": 0.07074380165289257,
+    "NDCG@10": 0.03474979285328495,
+    "HitRate@10": 0.07074380165289257,
+    "Recall@20": 0.11867768595041323,
+    "NDCG@20": 0.0468240279639626,
+    "HitRate@20": 0.11867768595041323
+  },
+  "selection_note": "selected by validation Recall@20"
+}
